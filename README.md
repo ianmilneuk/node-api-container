@@ -34,6 +34,6 @@ A generic Node Express container application for creating APIs to be used in dem
 
 - With this [manifest.json](manifest.json), it will deploy to [Oracle Application Container Cloud](https://cloud.oracle.com/en_US/application-container-cloud).
 
-- Because of this [app.yaml](app.yaml) file, the code an also deploy to [Google App Engine](https://cloud.google.com/appengine).
+- Because of this [app.yaml](app.yaml) file, the code an also deploy to [Google App Engine](https://cloud.google.com/appengine). 
 
 
