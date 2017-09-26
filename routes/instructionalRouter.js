@@ -47,17 +47,16 @@ router.get('/instructors', function (req, res, next) {
 // will handle any request that ends in /instructional/instructors/disciplines
 router.get('/instructors/disciplines', function (req, res, next) {
     var response = [
-        "All Mathmatics",
+        "Astronomy",
+        "Biology",
+        "Chemistry",
+        "Physics",
         "Developmental Math",
+        "Advanced Math",
         "Precalculus",
         "Calculus",
-        "Advanced Math",
         "All Mathmatics",
-        "Statistics",
-        "Physics",
-        "Chemistry",
-        "Biology",
-        "Astronomy"
+        "Statistics"
     ];
     res.send(response);
 });
