@@ -1,6 +1,6 @@
 {
   "runtime":{
-    "majorVersion":"4444"
+    "majorVersion":"4"
   },
   "command": "node app.js",
   "startupTime" : "600",
