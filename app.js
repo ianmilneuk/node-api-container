@@ -20,6 +20,9 @@ app.use('/instructional', instructionalRouter);
 var messagingRouter = require('./routes/messagingRouter');
 app.use('/messaging', messagingRouter);
 
+var universalRouter = require('./routes/universalParksRouter.js');
+app.use('/universal', universalRouter);
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
