@@ -31,6 +31,37 @@ router.get('/rides', function (req, res, next) {
     res.send(response);
 });
 
+// will handle any request that ends in /universal/menu
+router.get('/menu', function (req, res, next) {
+    var response = [
+        {
+            "item": "Coca-Cola Fountain Drink",
+            "price": 3.29        
+        },
+        {
+            "item": "Nestle Bottled Water",
+            "price": 2.99        
+        },
+        {
+            "item": "Powerade",
+            "price": 3.99        
+        },
+        {
+            "item": "Nathan's Foot Long Hot Dog",
+            "price": 3.00        
+        },
+        {
+            "item": "Smoked Turkey Leg",
+            "price": 10.49        
+        },
+        {
+            "item": "Chips",
+            "price": 2.99        
+        }        
+    ];
+    res.send(response);
+});
+
 
 // will handle any request that ends in /instructional/headers
 router.get('/headers', function (req, res, next) {
