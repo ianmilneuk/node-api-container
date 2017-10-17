@@ -1,3 +1,5 @@
+[![wercker status](https://app.wercker.com/status/bbf11822315a542c41d53d2355aee897/s/master "wercker status")](https://app.wercker.com/project/byKey/bbf11822315a542c41d53d2355aee897)
+
 # node-api-container
 A generic Node Express container application for creating APIs to be used in demonstrations. 
 
