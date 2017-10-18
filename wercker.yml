@@ -7,16 +7,6 @@ build:
     # A step that executes `npm install` command
     - npm-install
 
-    # A custom script step, name value is used in the UI
-    # and the code value contains the command that get executed
-    - script:
-        name: Validate node version and directory information
-        code: |
-          echo "node version $(node -v) running"
-          echo "npm version $(npm -v) running"
-          echo "pwd $(pwd)"
-          echo "ls -ltrah $(ls -ltrah)"
-
 # This pipeline will be chained to start at the end of a build pipeline in the
 # Wercker Web Workflows editor.
 push-to-dockerhub:
@@ -40,6 +30,24 @@ restart-occs-deployment:
         code: |
           curl -k -X POST 'https://140.86.40.114/api/v2/deployments/API-Container-20170802-172652/webhook/restart?token=hruzvnqd' -H 'authorization: Basic $($BEARER_TOKEN)'
  
+# Push to the Google Container Registry
+push-to-gcr:
+    steps:
+      - internal/docker-push:
+          username: _json_key
+          password: $GCR_JSON_KEY_FILE
+          repository: gcr.io/node-api-container-175518/node-api-container
+          registry: https://gcr.io/v2
+        
+# Push to AWS Elastic Container Registry
+push-to-ecr:
+  steps:
+    - internal/docker-push:
+        aws-access-key: $AWS_ACCESS_KEY_ID
+        aws-secret-key: $AWS_SECRET_ACCESS_KEY
+        aws-region: $AWS_REGION
+        aws-registry-id: $AWS_REGISTRY_ID
+        repository: 432275605314.dkr.ecr.us-east-1.amazonaws.com/node-api-container 
 
 # This pipeline will be chained to run in parallel with the restart-occs-deplyment pipeline in the 
 # Wercker Web Workflows editor.
@@ -64,21 +72,3 @@ deploy-to-ebs:
       s3-bucket: s3://node-api-container/
       s3-key: my-wordpress-app-1.2.1.tar.gz
 
-# Push to the Google Container Registry
-push-to-gcr:
-    steps:
-      - internal/docker-push:
-          username: _json_key
-          password: $GCR_JSON_KEY_FILE
-          repository: gcr.io/node-api-container-175518/node-api-container
-          registry: https://gcr.io/v2
-        
-# Push to AWS Elastic Container Registry
-push-to-ecr:
-  steps:
-    - internal/docker-push:
-        aws-access-key: $AWS_ACCESS_KEY_ID
-        aws-secret-key: $AWS_SECRET_ACCESS_KEY
-        aws-region: $AWS_REGION
-        aws-registry-id: $AWS_REGISTRY_ID
-        repository: 432275605314.dkr.ecr.us-east-1.amazonaws.com/node-api-container 
