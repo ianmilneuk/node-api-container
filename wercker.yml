@@ -18,7 +18,7 @@ push-to-dockerhub:
         working-dir: /pipeline/source # For some reason this isn't the default
         cmd: "node app.js"
         ports: "8080"
-        repository: wbleonard/node-api-container
+        repository: ianmilneuk/node-api-container
         registry: https://registry.hub.docker.com
 
 # This pipeline will be chained to start at the end of a build pipeline in the
