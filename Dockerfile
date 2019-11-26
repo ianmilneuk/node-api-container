@@ -8,7 +8,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Get the source
-RUN git clone https://github.com/wbleonard/node-api-container.git
+RUN git clone https://github.com/ianmilneuk/node-api-container.git
 
 # Set the node-api-container as the active directory
 WORKDIR /usr/src/app/node-api-container
